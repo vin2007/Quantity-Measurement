@@ -5,23 +5,23 @@ package com.apps.quantitymeasurement;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.apps.quantitymeasurement.UC4.Quantity;
-import com.apps.quantitymeasurement.UC4.Unit;
+import com.apps.quantitymeasurement.UC5.Quantity;
+import com.apps.quantitymeasurement.UC5.Unit;
 
-public class UC4Test {
+public class UC5Test {
 
     @Test
-    void testSameUnit() {
-        assertEquals(new Quantity(1.0, Unit.FEET), new Quantity(1.0, Unit.FEET));
+    void testFeetToInches() {
+        assertEquals(new Quantity(1.0, Unit.FEET), new Quantity(12.0, Unit.INCH));
     }
 
     @Test
-    void testDifferentUnit() {
-        assertNotEquals(new Quantity(1.0, Unit.FEET), new Quantity(1.0, Unit.INCH));
+    void testYardToFeet() {
+        assertEquals(new Quantity(1.0, Unit.YARD), new Quantity(3.0, Unit.FEET));
     }
 
     @Test
-    void testDifferentValue() {
+    void testDifferentValues() {
         assertNotEquals(new Quantity(1.0, Unit.FEET), new Quantity(2.0, Unit.FEET));
     }
 

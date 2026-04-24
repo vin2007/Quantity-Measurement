@@ -2,10 +2,20 @@ package main;
 
 package com.apps.quantitymeasurement;
 
-public class UC4 {
+public class UC5 {
 
     public enum Unit {
-        FEET, INCH, YARD
+        FEET(12), INCH(1), YARD(36);
+
+        private final double factor;
+
+        Unit(double factor) {
+            this.factor = factor;
+        }
+
+        public double toBase(double value) {
+            return value * factor;
+        }
     }
 
     public static class Quantity {
@@ -23,7 +33,7 @@ public class UC4 {
             if (this == obj) return true;
             if (obj == null || getClass() != obj.getClass()) return false;
             Quantity q = (Quantity) obj;
-            return Double.compare(q.value, value) == 0 && unit == q.unit;
+            return Double.compare(unit.toBase(value), q.unit.toBase(q.value)) == 0;
         }
     }
 }
